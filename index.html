@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Sport Learning - Unduh Aplikasi Android</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0D6EFD;
+      --primary-dark: #0A58CA;
+      --primary-light: #E7F1FF;
+      --accent: #198754;
+      --dark: #0F172A;
+      --gray: #64748B;
+      --light: #F8FAFC;
+      --white: #FFFFFF;
+      --card-border: #E2E8F0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 20px 35px -10px rgba(13, 110, 253, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Nav */
+    header {
+      padding: 20px 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0D6EFD, #00D26A);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(13, 110, 253, 0.4);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--dark);
+      border: 2px solid var(--card-border);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 70px 0 90px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 30px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #0D6EFD, #00D26A);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--gray);
+      margin-bottom: 35px;
+      max-width: 540px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .meta-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Phone Mockup Card */
+    .phone-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone-card {
+      background: var(--white);
+      border-radius: 32px;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--card-border);
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      position: relative;
+    }
+
+    .phone-icon-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #0D6EFD, #198754);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin: 10px auto 20px;
+      box-shadow: 0 10px 20px rgba(13, 110, 253, 0.25);
+    }
+
+    .phone-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .phone-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    .qr-box {
+      background: var(--light);
+      border: 2px dashed var(--card-border);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .qr-box img {
+      width: 140px;
+      height: 140px;
+      display: block;
+      margin: 0 auto 10px;
+      border-radius: 8px;
+    }
+
+    .qr-caption {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray);
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 0;
+      background: var(--white);
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 50px;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      color: var(--gray);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: var(--light);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--primary);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      background: var(--white);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* How to Install Steps */
+    .steps-section {
+      padding: 80px 0;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .step-box {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .step-content p {
+      font-size: 0.875rem;
+      color: var(--gray);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--card-border);
+    }
+
+    /* Responsive */
+    @media (max-width: 868px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .hero-subtitle {
+        margin: 0 auto 30px;
+      }
+      .cta-group {
+        justify-content: center;
+      }
+      .meta-info {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="brand">
+        <div class="brand-icon">⚽</div>
+        <span>Smart Sport Learning</span>
+      </a>
+      <a href="#download" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Unduh APK</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="download">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Left Content -->
+        <div class="hero-content">
+          <div class="badge">🚀 Versi Android Terbaru (v1.0)</div>
+          <h1 class="hero-title">Belajar PJOK Jadi Lebih <span>Seru & Interaktif</span></h1>
+          <p class="hero-subtitle">
+            Aplikasi media pembelajaran digital PJOK untuk SMP/SMA. Lengkap dengan materi gerak dasar, video panduan, kuis interaktif, dan gamifikasi skor belajar.
+          </p>
+
+          <div class="cta-group">
+            <!-- Ganti href dengan file APK Anda, misal: SmartSportLearning.apk -->
+            <a href="SmartSportLearning.apk" class="btn btn-primary" download id="downloadBtn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download File APK</span>
+            </a>
+            
+            <a href="https://ais-pre-ilg5vympju2l7lec7zcwb5-40823856801.asia-southeast1.run.app" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              <span>Coba Demo Online</span>
+            </a>
+          </div>
+
+          <div class="meta-info">
+            <div class="meta-item">
+              <svg width="18" height="18" fill="none" stroke="#198754" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+              <span>Bebas Virus & Aman</span>
+            </div>
+            <div class="meta-item">
+              <svg width="18" height="18" fill="none" stroke="#0D6EFD" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Android 8.0+</span>
+            </div>
+            <div class="meta-item">
+              <svg width="18" height="18" fill="none" stroke="#64748B" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Ukuran ~25 MB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content: Download Card & QR -->
+        <div class="phone-wrapper">
+          <div class="phone-card">
+            <div class="phone-icon-circle">🏃‍♂️</div>
+            <h3>Smart Sport Learning</h3>
+            <p>Aplikasi PJOK SMP / SMA</p>
+
+            <div class="qr-box">
+              <!-- QR Code Generator untuk Link Demo / Download -->
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://ais-pre-ilg5vympju2l7lec7zcwb5-40823856801.asia-southeast1.run.app" alt="QR Code Unduh Aplikasi">
+              <div class="qr-caption">Scan QR dengan kamera HP untuk buka langsung</div>
+            </div>
+
+            <a href="SmartSportLearning.apk" download class="btn btn-primary" style="width: 100%; border-radius: 12px;">
+              📥 Download Sekarang
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Fitur Unggulan</h2>
+        <p>Dirancang khusus untuk mendukung pembelajaran Pendidikan Jasmani, Olahraga, dan Kesehatan modern.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h4>Materi Lengkap PJOK</h4>
+          <p>Mencakup bola besar, bola kecil, atletik, senam, renang, dan pola hidup sehat sesuai kurikulum.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎬</div>
+          <h4>Video Panduan Gerak</h4>
+          <p>Visualisasi teknik dasar dengan video animasi dan penjelasan step-by-step yang mudah dipahami.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h4>Kuis & Gamifikasi</h4>
+          <p>Uji pemahaman dengan kuis interaktif, perolehan XP skor, serta badge pencapaian belajar.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h4>Dashboard Siswa & Guru</h4>
+          <p>Pantau perkembangan pemahaman dan hasil kuis harian dengan grafik statistik yang rapi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructions Section -->
+  <section class="steps-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Cara Memasang di HP Android</h2>
+        <p>Ikuti 3 langkah mudah berikut untuk menginstal aplikasi</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-box">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Unduh File APK</h4>
+            <p>Klik tombol <strong>Download File APK</strong> di atas atau scan kode QR menggunakan HP Anda.</p>
+          </div>
+        </div>
+
+        <div class="step-box">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Izinkan Sumber Tidak Dikenal</h4>
+            <p>Jika muncul notifikasi keamanan di HP, buka <strong>Setelan</strong> lalu aktifkan <em>Izinkan dari sumber ini</em>.</p>
+          </div>
+        </div>
+
+        <div class="step-box">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Instal & Mulai Belajar</h4>
+            <p>Buka file APK yang telah diunduh, klik <strong>Instal</strong>, dan nikmati pembelajaran PJOK interaktif!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Smart Sport Learning. Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
