@@ -21,37 +21,7 @@ object DatabaseSeeder {
 
     suspend fun seedDatabaseIfEmpty(database: AppDatabase) = withContext(Dispatchers.IO) {
         val userCount = database.userDao().getUserCount().first()
-        if (userCount > 0) {
-            // Ensure volleyball video and material URLs are updated with the user requested YouTube link
-            database.videoDao().getVideosByCategory(SportCategory.BOLA_VOLI).first().forEach { v ->
-                database.videoDao().updateVideo(v.copy(videoUrl = "https://youtu.be/j6pG5qgZGsE?si=OHdGie5naMK11hEB"))
-            }
-            database.materialDao().getMaterialsByCategory(SportCategory.BOLA_VOLI).first().forEach { m ->
-                database.materialDao().updateMaterial(m.copy(videoUrl = "https://youtu.be/j6pG5qgZGsE?si=OHdGie5naMK11hEB"))
-            }
-            // Ensure basketball video and material URLs are updated with the user requested YouTube link
-            database.videoDao().getVideosByCategory(SportCategory.BOLA_BASKET).first().forEach { v ->
-                database.videoDao().updateVideo(v.copy(videoUrl = "https://youtu.be/UKGNYw3QW0M?si=qO4BYSqqpB2NRSMe"))
-            }
-            database.materialDao().getMaterialsByCategory(SportCategory.BOLA_BASKET).first().forEach { m ->
-                database.materialDao().updateMaterial(m.copy(videoUrl = "https://youtu.be/UKGNYw3QW0M?si=qO4BYSqqpB2NRSMe"))
-            }
-            // Ensure athletics (Atletik) video and material URLs are updated with the user requested YouTube link
-            database.videoDao().getVideosByCategory(SportCategory.ATLETIK).first().forEach { v ->
-                database.videoDao().updateVideo(v.copy(videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ"))
-            }
-            database.materialDao().getMaterialsByCategory(SportCategory.ATLETIK).first().forEach { m ->
-                database.materialDao().updateMaterial(m.copy(videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ"))
-            }
-            // Ensure injury handling (Penanganan Cedera) video and material URLs are updated with the user requested YouTube link
-            database.videoDao().getVideosByCategory(SportCategory.PENANGANAN_CEDERA).first().forEach { v ->
-                database.videoDao().updateVideo(v.copy(videoUrl = "https://youtu.be/pdBX5lKW-hg?si=UHOFG3De37ENzIRT"))
-            }
-            database.materialDao().getMaterialsByCategory(SportCategory.PENANGANAN_CEDERA).first().forEach { m ->
-                database.materialDao().updateMaterial(m.copy(videoUrl = "https://youtu.be/pdBX5lKW-hg?si=UHOFG3De37ENzIRT"))
-            }
-            return@withContext
-        }
+        if (userCount > 0) return@withContext
 
         // 1. Seed Users
         val defaultUsers = listOf(
@@ -246,7 +216,7 @@ object DatabaseSeeder {
                 tips = "Langkahkan satu kaki ke depan saat mengoper untuk menambah dorongan tenaga dan stabilitas.",
                 practiceExercises = "Tiga orang passing segitiga rotasi cepat kombinasi 3 jenis passing selama 10 menit.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/UKGNYw3QW0M?si=qO4BYSqqpB2NRSMe",
+                videoUrl = "https://www.youtube.com/watch?v=Z_a7H56bTyk",
                 readTimeMinutes = 6,
                 orderIndex = 1,
                 isPopular = true
@@ -265,7 +235,7 @@ object DatabaseSeeder {
                 tips = "Latih dribble dengan bola tenis di tangan satunya untuk melatih reflek sensorik tanpa melihat bola basket.",
                 practiceExercises = "Dribble cone zig-zag tangan kanan dan kiri, lalu lakukan pivot 180 derajat sebelum passing.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/UKGNYw3QW0M?si=qO4BYSqqpB2NRSMe",
+                videoUrl = "https://www.youtube.com/watch?v=CqYQ1sU7_40",
                 readTimeMinutes = 6,
                 orderIndex = 2,
                 isPopular = true
@@ -284,7 +254,7 @@ object DatabaseSeeder {
                 tips = "Pantulkan bola tepat pada sudut kotak kecil di papan pantul (backboard) untuk memastikan bola masuk ke jaring.",
                 practiceExercises = "Latihan 20 tembakan lay-up sisi kanan dan 20 lay-up sisi kiri secara berurutan.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/UKGNYw3QW0M?si=qO4BYSqqpB2NRSMe",
+                videoUrl = "https://www.youtube.com/watch?v=Jb13yWwJv8c",
                 readTimeMinutes = 7,
                 orderIndex = 3,
                 isPopular = true
@@ -303,7 +273,7 @@ object DatabaseSeeder {
                 tips = "Amankan bola rebound di depan dada dengan kedua siku sedikit membuka untuk memproteksi bola.",
                 practiceExercises = "Drill 1 on 1 defense slide dari baseline ke half-court dilanjutkan duel rebound.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/UKGNYw3QW0M?si=qO4BYSqqpB2NRSMe",
+                videoUrl = "https://www.youtube.com/watch?v=2r1pXW5q3lA",
                 readTimeMinutes = 5,
                 orderIndex = 4,
                 isPopular = false
@@ -322,7 +292,7 @@ object DatabaseSeeder {
                 tips = "Perhatikan hitungan detik wasit dan sinyal visual shot clock di atas papan ring.",
                 practiceExercises = "Kuis simulasi situasi pertandingan dan aturan wasit bersama rekan kelas.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/UKGNYw3QW0M?si=qO4BYSqqpB2NRSMe",
+                videoUrl = "https://www.youtube.com/watch?v=Vp_g87E_zKw",
                 readTimeMinutes = 6,
                 orderIndex = 5,
                 isPopular = false
@@ -343,7 +313,7 @@ object DatabaseSeeder {
                 tips = "Arahkan bidang datar lengan bawah (antara pergelangan dan siku) tepat menghadap target umpan.",
                 practiceExercises = "Latihan passing bawah mandiri ke atas sebanyak 50 kali tanpa jatuh.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/j6pG5qgZGsE?si=OHdGie5naMK11hEB",
+                videoUrl = "https://www.youtube.com/watch?v=0kF4_7qT2tM",
                 readTimeMinutes = 6,
                 orderIndex = 1,
                 isPopular = true
@@ -362,7 +332,7 @@ object DatabaseSeeder {
                 tips = "Lakukan kontak bola pada titik tertinggi ayunan tangan untuk lintasan bola menukik.",
                 practiceExercises = "Latihan 20 kali servis atas menargetkan cone di sudut lapangan lawan.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/j6pG5qgZGsE?si=OHdGie5naMK11hEB",
+                videoUrl = "https://www.youtube.com/watch?v=a7b6C9D1w2k",
                 readTimeMinutes = 6,
                 orderIndex = 2,
                 isPopular = true
@@ -381,7 +351,7 @@ object DatabaseSeeder {
                 tips = "Fokus pada timing lompatan; lompatlah saat bola mulai turun dari puncak umpan toser.",
                 practiceExercises = "Latihan loncatan spike tanpa bola di depan net 15 repetisi fokus pendaratan seimbang.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/j6pG5qgZGsE?si=OHdGie5naMK11hEB",
+                videoUrl = "https://www.youtube.com/watch?v=3gA8aR2yM9s",
                 readTimeMinutes = 7,
                 orderIndex = 3,
                 isPopular = true
@@ -400,7 +370,7 @@ object DatabaseSeeder {
                 tips = "Jangan sentuh bola jika bola masih berada di area setter lawan sebelum melakukan serangan.",
                 practiceExercises = "Latihan lateral slide blocking di sepanjang net 10 set bolak-balik.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/j6pG5qgZGsE?si=OHdGie5naMK11hEB",
+                videoUrl = "https://www.youtube.com/watch?v=kYv98pL7kGg",
                 readTimeMinutes = 5,
                 orderIndex = 4,
                 isPopular = false
@@ -419,7 +389,7 @@ object DatabaseSeeder {
                 tips = "Selalu perhatikan pemain depan dan samping Anda agar tidak melanggar overlap posisi rotasi.",
                 practiceExercises = "Simulasi rotasi 6 pemain dalam papan taktik dan implementasi di lapangan.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/j6pG5qgZGsE?si=OHdGie5naMK11hEB",
+                videoUrl = "https://www.youtube.com/watch?v=Fq_nE3WbZ0A",
                 readTimeMinutes = 6,
                 orderIndex = 5,
                 isPopular = false
@@ -440,7 +410,7 @@ object DatabaseSeeder {
                 tips = "Jaga otot wajah, rahang, dan bahu tetap rileks agar energi fokus pada dorongan tungkai kaki.",
                 practiceExercises = "Latihan sprint interval 30 meter x 6 repetisi dengan istirahat penuh 2 menit.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ",
+                videoUrl = "https://www.youtube.com/watch?v=0kF4_7qT2tM",
                 readTimeMinutes = 6,
                 orderIndex = 1,
                 isPopular = true
@@ -459,7 +429,7 @@ object DatabaseSeeder {
                 tips = "Fokuskan pendengaran penuh pada bunyi pistol tembakan, jangan menebak-nebak waktu tembakan.",
                 practiceExercises = "Latihan reaksi start 10 meter sebanyak 8 repetisi.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ",
+                videoUrl = "https://www.youtube.com/watch?v=1oW_W1N_Qc8",
                 readTimeMinutes = 6,
                 orderIndex = 2,
                 isPopular = true
@@ -478,7 +448,7 @@ object DatabaseSeeder {
                 tips = "Gunakan strategi penempatan: Pelari 1 (start terbaik), Pelari 2 (lintasan lurus terkuat), Pelari 3 (ahli tikungan), Pelari 4 (finisher bermental baja).",
                 practiceExercises = "Latihan passing tongkat berpasangan pada kecepatan penuh 6 repetisi.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ",
+                videoUrl = "https://www.youtube.com/watch?v=Z_a7H56bTyk",
                 readTimeMinutes = 7,
                 orderIndex = 3,
                 isPopular = false
@@ -497,7 +467,7 @@ object DatabaseSeeder {
                 tips = "Latih pola napas 2-2 (dua langkah hirup napas, dua langkah hembuskan napas).",
                 practiceExercises = "Latihan lari interval 400 meter x 4 repetisi dengan target waktu konstan.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ",
+                videoUrl = "https://www.youtube.com/watch?v=CqYQ1sU7_40",
                 readTimeMinutes = 6,
                 orderIndex = 4,
                 isPopular = false
@@ -516,7 +486,7 @@ object DatabaseSeeder {
                 tips = "Ukur langkah awalan secara presisi menggunakan meteran agar titik tumpu selalu konsisten.",
                 practiceExercises = "Latihan lompat dari box pendek ke bak pasir fokus ayunan kaki mendarat 10 kali.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ",
+                videoUrl = "https://www.youtube.com/watch?v=Jb13yWwJv8c",
                 readTimeMinutes = 7,
                 orderIndex = 5,
                 isPopular = true
@@ -535,7 +505,7 @@ object DatabaseSeeder {
                 tips = "Latih kekuatan core dan fleksibilitas tulang belakang dengan jembatan kayang.",
                 practiceExercises = "Drill tolakan vertikal satu kaki membelakangi mistar rendah 10 kali.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ",
+                videoUrl = "https://www.youtube.com/watch?v=2r1pXW5q3lA",
                 readTimeMinutes = 6,
                 orderIndex = 6,
                 isPopular = false
@@ -554,7 +524,7 @@ object DatabaseSeeder {
                 tips = "Manfaatkan putaran pinggul dan daya dorong tungkai bawah, bukan hanya mengandalkan tenaga lengan.",
                 practiceExercises = "Latihan dorongan bola medicine 3 kg dari leher 15 repetisi.",
                 safetyWarning = "Pastikan area sektor lemparan bebas dari orang sebelum melakukan tolakan.",
-                videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ",
+                videoUrl = "https://www.youtube.com/watch?v=Vp_g87E_zKw",
                 readTimeMinutes = 6,
                 orderIndex = 7,
                 isPopular = false
@@ -573,7 +543,7 @@ object DatabaseSeeder {
                 tips = "Lembing harus selalu dibawa dalam posisi tegak saat menuju lapangan latihan demi keselamatan bersama.",
                 practiceExercises = "Latihan ayunan lempar bola kasti berbobot untuk membiasakan poros bahu.",
                 safetyWarning = "Patuhi protokol keselamatan ketat: Jangan pernah mengambil lembing saat ada pelempar lain bersiap.",
-                videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ",
+                videoUrl = "https://www.youtube.com/watch?v=a7b6C9D1w2k",
                 readTimeMinutes = 7,
                 orderIndex = 8,
                 isPopular = false
@@ -592,7 +562,7 @@ object DatabaseSeeder {
                 tips = "Fokus pada kelenturan sendi panggul dan frekuensi langkah cepat daripada memaksakan langkah terlalu lebar.",
                 practiceExercises = "Latihan jalan cepat lurus di atas garis lintasan 100 meter x 4 repetisi menjaga kontak tanah.",
                 safetyWarning = "",
-                videoUrl = "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ",
+                videoUrl = "https://www.youtube.com/watch?v=3gA8aR2yM9s",
                 readTimeMinutes = 6,
                 orderIndex = 9,
                 isPopular = false
@@ -613,7 +583,7 @@ object DatabaseSeeder {
                 tips = "Minum air 200-300 ml sekitar 20 menit sebelum berolahraga untuk menjaga hidrasi seluler.",
                 practiceExercises = "Praktekkan protokol 5 menit dynamic warm up sebelum setiap sesi latihan PJOK.",
                 safetyWarning = "PENTING: Materi ini adalah panduan edukasi dasar PJOK dan bukan pengganti diagnosis medis profesional.",
-                videoUrl = "https://youtu.be/pdBX5lKW-hg?si=UHOFG3De37ENzIRT",
+                videoUrl = "https://www.youtube.com/watch?v=kYv98pL7kGg",
                 readTimeMinutes = 5,
                 orderIndex = 1,
                 isPopular = true
@@ -632,7 +602,7 @@ object DatabaseSeeder {
                 tips = "Ingat pantangan 'HARM' dalam 48 jam pertama: Hindari Heat (panas), Alcohol, Running (olahraga), dan Massage (pijat).",
                 practiceExercises = "Simulasi membalut perban elastis pada pergelangan kaki secara berpasangan.",
                 safetyWarning = "PERINGATAN KESELAMATAN: Segera bawa ke IGD/dokter spesialis jika terdapat deformitas bentuk tulang, mati rasa, atau nyeri tak tertahankan.",
-                videoUrl = "https://youtu.be/pdBX5lKW-hg?si=UHOFG3De37ENzIRT",
+                videoUrl = "https://www.youtube.com/watch?v=Fq_nE3WbZ0A",
                 readTimeMinutes = 7,
                 orderIndex = 2,
                 isPopular = true
@@ -651,7 +621,7 @@ object DatabaseSeeder {
                 tips = "Lakukan peregangan betis secara rutin sebelum bertanding, terutama saat cuaca panas terik.",
                 practiceExercises = "Praktekkan pertolongan kram betis mandiri dan berbantuan.",
                 safetyWarning = "Edukasi pertolongan pertama dasar sekolah. Jika kram disertai demam tinggi atau tidak membaik, hubungi tim medis.",
-                videoUrl = "https://youtu.be/pdBX5lKW-hg?si=UHOFG3De37ENzIRT",
+                videoUrl = "https://www.youtube.com/watch?v=Z_a7H56bTyk",
                 readTimeMinutes = 5,
                 orderIndex = 3,
                 isPopular = false
@@ -670,7 +640,7 @@ object DatabaseSeeder {
                 tips = "Gunakan alas kaki dengan ankle support yang kokoh dan perhatikan permukaan lapangan yang berlubang.",
                 practiceExercises = "Latihan propriosepsi keseimbangan berdiri satu kaki untuk rehabilitasi ankle ringan.",
                 safetyWarning = "PERINGATAN: Periksakan ke fasilitas kesehatan jika terdengar bunyi 'pop' saat cedera atau sendi tidak dapat digerakkan.",
-                videoUrl = "https://youtu.be/pdBX5lKW-hg?si=UHOFG3De37ENzIRT",
+                videoUrl = "https://www.youtube.com/watch?v=1oW_W1N_Qc8",
                 readTimeMinutes = 6,
                 orderIndex = 4,
                 isPopular = false
@@ -689,7 +659,7 @@ object DatabaseSeeder {
                 tips = "Kotak P3K sekolah harus selalu terisi lengkap dengan kassa steril, perban elastis, antiseptik, plester, dan ice pack siap pakai.",
                 practiceExercises = "Praktek membersihkan dan membalut luka steril pada manekin/teman sekelas.",
                 safetyWarning = "EDUKASI DASAR PJOK: Bukan pengganti tindakan medis darurat. Selalu hubungi nomor gawat darurat (119/112) untuk kasus kritis.",
-                videoUrl = "https://youtu.be/pdBX5lKW-hg?si=UHOFG3De37ENzIRT",
+                videoUrl = "https://www.youtube.com/watch?v=0kF4_7qT2tM",
                 readTimeMinutes = 6,
                 orderIndex = 5,
                 isPopular = false
@@ -716,49 +686,49 @@ object DatabaseSeeder {
                 3, SportCategory.BOLA_BASKET,
                 "Panduan Chest Pass & Bounce Pass Basket", "07:30",
                 "Teknik mengoper cepat dan akurat untuk membuka pertahanan lawan dalam skema permainan basket modern.",
-                "https://youtu.be/UKGNYw3QW0M?si=qO4BYSqqpB2NRSMe", "", 1
+                "https://www.youtube.com/watch?v=Z_a7H56bTyk", "", 1
             ),
             VideoEntity(
                 4, SportCategory.BOLA_BASKET,
                 "Mekanika Shooting B.E.E.F & Lay-up Kanan Kiri", "09:55",
                 "Cara melatih form shooting yang konsisten dan irama 2 langkah layup berkecepatan tinggi.",
-                "https://youtu.be/UKGNYw3QW0M?si=qO4BYSqqpB2NRSMe", "", 2
+                "https://www.youtube.com/watch?v=Jb13yWwJv8c", "", 2
             ),
             VideoEntity(
                 5, SportCategory.BOLA_VOLI,
                 "Teknik Passing Bawah & Atas Voli Sempurna", "10:15",
                 "Langkah pembentukan platform lengan passing bawah dan sentuhan ruas jari passing atas untuk toser.",
-                "https://youtu.be/j6pG5qgZGsE?si=OHdGie5naMK11hEB", "", 1
+                "https://www.youtube.com/watch?v=0kF4_7qT2tM", "", 1
             ),
             VideoEntity(
                 6, SportCategory.BOLA_VOLI,
                 "Tutorial Awalan 3 Langkah Smash & Servis Atas", "12:40",
                 "Langkah loncatan spike yang meledak di atas net dan teknik memukul servis atas tajam berputar.",
-                "https://youtu.be/j6pG5qgZGsE?si=OHdGie5naMK11hEB", "", 2
+                "https://www.youtube.com/watch?v=3gA8aR2yM9s", "", 2
             ),
             VideoEntity(
                 7, SportCategory.ATLETIK,
                 "Teknik Start Jongkok & Akselerasi Sprint 100m", "08:10",
                 "Aba-aba start jongkok, sudut balok tumpu, dan dorongan tenaga fase akselerasi lari cepat.",
-                "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ", "", 1
+                "https://www.youtube.com/watch?v=1oW_W1N_Qc8", "", 1
             ),
             VideoEntity(
                 8, SportCategory.ATLETIK,
                 "Fase Lompat Jauh & Tolakan Papan Tumpu", "09:15",
                 "Analisis gerakan awalan kecepatan, tumpuan satu kaki, melayang gaya lentik, dan pendaratan bak pasir.",
-                "https://youtu.be/T4frk2Vt2O4?si=QdXoBk4DKd4nX4mZ", "", 2
+                "https://www.youtube.com/watch?v=Jb13yWwJv8c", "", 2
             ),
             VideoEntity(
                 9, SportCategory.PENANGANAN_CEDERA,
                 "Panduan Lengkap Pertolongan Pertama Prinsip PRICE", "13:05",
                 "Langkah proteksi, istirahat, kompres es kain, balut tekan elastis, dan elevasi kaki saat ankle sprain.",
-                "https://youtu.be/pdBX5lKW-hg?si=UHOFG3De37ENzIRT", "", 1
+                "https://www.youtube.com/watch?v=Fq_nE3WbZ0A", "", 1
             ),
             VideoEntity(
                 10, SportCategory.PENANGANAN_CEDERA,
                 "Penanganan Cepat Kram Betis & Pembersihan Luka", "07:45",
                 "Peregangan dorsofleksi betis kram akut dan teknik desinfeksi luka lecet steril bebas perih.",
-                "https://youtu.be/pdBX5lKW-hg?si=UHOFG3De37ENzIRT", "", 2
+                "https://www.youtube.com/watch?v=kYv98pL7kGg", "", 2
             )
         )
         database.videoDao().insertVideos(videos)
