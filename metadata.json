@@ -1,0 +1,7 @@
+{
+  "name": "Smart Sport Learning",
+  "description": "Media pembelajaran digital interaktif PJOK (Pendidikan Jasmani, Olahraga, dan Kesehatan) untuk tingkat SMP/SMA dengan materi lengkap, video, kuis interaktif, gamifikasi, dan dashboard guru/admin.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
